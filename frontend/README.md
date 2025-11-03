@@ -1,40 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Circle Wallet dApp – Frontend
 
-## Getting Started
+A **Next.js + Tailwind CSS** frontend for a blockchain wallet dApp using **Circle's Developer-Controlled Wallets** on **Polygon Amoy testnet**.
 
-First, run the development server:
+Users can:
+
+- Sign up / log in (JWT)
+- View **USDC balance** and **wallet address**
+- Send **0.01 USDC** to a fixed address
+- Log out securely
+
+---
+
+## Features
+
+| Feature                          | Status |
+| -------------------------------- | ------ |
+| Responsive UI with Tailwind      | Done   |
+| JWT Authentication               | Done   |
+| Auto-redirect on login           | Done   |
+| Protected Dashboard              | Done   |
+| Logout Button                    | Done   |
+| Real-time balance (USDC + MATIC) | Done   |
+
+---
+
+## Tech Stack
+
+- **Next.js 14** (App Router not used – `pages/` directory)
+- **TypeScript**
+- **Tailwind CSS**
+- **Axios** for API calls
+- **localStorage** for JWT
+
+---
+
+## Project Structure
+
+```
+frontend/
+├── src/
+│   ├── pages/
+│   │   ├── index.tsx         → Home (Sign Up / Log In)
+│   │   ├── signup.tsx
+│   │   ├── login.tsx
+│   │   ├── dashboard.tsx     → Wallet + Send USDC
+│   │   └── _app.tsx
+│   ├── components/
+│   │   └── WalletCard.tsx
+│   └── styles/
+│       └── globals.css
+├── tailwind.config.js
+├── postcss.config.js
+└── package.json
+```
+
+---
+
+## Setup
+
+### 1. Clone & Install
+
+```bash
+cd frontend
+npm install
+```
+
+2. Environment
+   No .env needed. Backend URL is hardcoded to http://localhost:5000.
+
+For production: use NEXT_PUBLIC_API_URL
+
+3. Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open: http://localhost:3000
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Pages
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+| Feature | Status |
+| ------- | ------ |
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Route,Description
+/ | Home – Sign Up / Log In
+/signup | Create account + auto-create Circle wallet
+/login | Log in with email/password
+/dashboard | "View wallet, USDC balance, send 0.01 USDC"
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Faucets (Testnet)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+After signup:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Get MATIC: https://faucet.polygon.technology
+Get USDC: https://faucet.circle.com
 
-## Deploy on Vercel
+Paste your wallet address from Dashboard.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Logout
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Click "Log Out" on Dashboard or Home
+JWT removed → redirected to /
