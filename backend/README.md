@@ -70,11 +70,13 @@ npm install
 
 ### 2. Create .env
 
+```
 CIRCLE_API_KEY=TEST_API_KEY:your_id:your_secret
 ENTITY_SECRET=your_64_char_hex_secret
 WALLET_SET_ID=walletset_your_id_here
 MONGODB_URI=mongodb://127.0.0.1:27017/circle-dapp
 JWT_SECRET=your_strong_secret_here
+```
 
 Get keys from: https://app.circle.com
 
